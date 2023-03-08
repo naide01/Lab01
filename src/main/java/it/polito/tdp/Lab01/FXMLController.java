@@ -1,9 +1,6 @@
 package it.polito.tdp.Lab01;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.Lab01.model.Parole;
@@ -35,6 +32,11 @@ public class FXMLController {
     @FXML
     private TextArea txtResult;
     
+    @FXML
+    private Button butCancella;
+   
+    @FXML
+    private TextArea txtComunicazioni;
 
     @FXML
     void doInsert(ActionEvent event) {
@@ -45,6 +47,7 @@ public class FXMLController {
     	}
     	txtResult.setText(s);
     	txtParola.clear();
+    	txtComunicazioni.appendText(System.nanoTime() + "\n");
     }
 
     @FXML
@@ -52,8 +55,20 @@ public class FXMLController {
     	elenco.reset();
     	txtResult.clear();
     	txtParola.clear();
+    	txtComunicazioni.appendText(System.nanoTime() + "\n");
     }
-
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	if (elenco.getElenco().contains(txtParola.getText())) {
+    		elenco.rimuoviParola(txtParola.getText());
+    		txtParola.clear();
+    		txtComunicazioni.appendText(System.nanoTime() + "\n");
+    	}
+    }
+  
+    
+    
     @FXML
     void initialize() {
         assert btnInserisci != null : "fx:id=\"btnInserisci\" was not injected: check your FXML file 'Scene.fxml'.";

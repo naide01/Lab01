@@ -2,10 +2,12 @@ package it.polito.tdp.Lab01.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Parole implements Comparable <Parole>{
-	private List <String> listaParole = new ArrayList<String>();
+	//private List <String> listaParole = new ArrayList<String>();
+	private List <String> listaParole = new LinkedList<String>();
 	
 	public Parole() {
 	}
@@ -26,6 +28,10 @@ public class Parole implements Comparable <Parole>{
 	@Override
 	public int compareTo(Parole p) {
 		return this.compareTo(p);
+	}
+
+	public void rimuoviParola(String text) {
+		listaParole.remove(text);
 	}
 
 	/*@Override
