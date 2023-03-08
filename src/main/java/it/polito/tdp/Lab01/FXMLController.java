@@ -1,6 +1,9 @@
 package it.polito.tdp.Lab01;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.Lab01.model.Parole;
@@ -31,15 +34,24 @@ public class FXMLController {
 
     @FXML
     private TextArea txtResult;
+    
 
     @FXML
     void doInsert(ActionEvent event) {
-
+    	String s = "";
+    	elenco.addParola(txtParola.getText());
+    	for (String stringa : elenco.getElenco()) {
+    		s += stringa + "\n";
+    	}
+    	txtResult.setText(s);
+    	txtParola.clear();
     }
 
     @FXML
     void doReset(ActionEvent event) {
-
+    	elenco.reset();
+    	txtResult.clear();
+    	txtParola.clear();
     }
 
     @FXML
